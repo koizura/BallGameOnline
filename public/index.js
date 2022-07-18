@@ -318,6 +318,9 @@ function draw() {
     text(rate + " FPS", 10, 20);
     if (connected) {
         text("latency: " + latency + "ms", 10, 50);
+        if (roomName) {
+            text("room Name: " + roomName.substring(0, 3), 10, 80);
+        }
     }
 }
 
