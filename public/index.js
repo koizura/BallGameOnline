@@ -1,5 +1,5 @@
 // const destination = "http://localhost:3001";
-const destination = "wss://BallGameOnline.koizura.me";
+const destination = "wss://ballgame.koizura.me";
 let socket;
 
 
