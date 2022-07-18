@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Game</title>
+  <script src="./libraries/p5.js"></script>
+  <script src="./libraries/socket.io.js"></script>
+  <link rel="stylesheet" href="./index.css" />
+
+</head>
+
+<body>
+
+  <header>
+  </header>
+  <main>
+    <div class="world" id="world">
+      <div class="menu">
+        <h1 id="title">BALL GAME</h1>
+        <div id="player-selection">
+          <select id="left-type">
+            <option value="player" selected>Player 1</option>
+            <option value="juggler">Juggler AI</option>
+            <option value="jumper">Jumper AI</option>
+            <option value="master">Master AI</option>
+          </select>
+          <div class="startBtns">
+            <button id="start-btn">Start Game</button>
+            <button id="online-btn">Find Online Match</button>
+          </div>
+          <button id="home-btn">Home</button>
+          <select id="right-type">
+            <option value="player">Player 2</option>
+            <option value="juggler" selected>Juggler AI</option>
+            <option value="jumper">Jumper AI</option>
+            <option value="master">Master AI</option>
+          </select>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div id="credits">
+      <p>Game AI Demo | Ball Game | <a href="https://koizura.me" target="blank">koizura.me</a></p>
+      </div>
+    <script src="index.js"></script>
+  </main>
+</body>
+
+</html>

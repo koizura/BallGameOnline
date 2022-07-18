@@ -1,0 +1,210 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+    cursor: pointer;
+}
+
+
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('assets/BebasNeue.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title {
+    color:white;
+    font-size: 8rem;
+    font-family: BebasNeue, Tahoma, serif;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    top:25%;
+    bottom:75%;
+}
+.menu {
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width:1000px;
+    height:600px;
+    z-index:2;
+}
+
+#world {
+    background: linear-gradient(#7F5A83, #0D324D);
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+.p5Canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+select {
+    background-color:rgb(137, 137, 137);
+    color:white;
+    font-size: 15px;
+    width:200px;
+    height:50px;
+    margin: 0 auto;
+    border: none;
+    padding: 5px;
+    display:flex;
+    text-decoration: none;
+    font-family:'Open Sans', sans-serif;
+    text-align: center;
+}
+select:hover {
+    background-color:rgb(120, 120, 120);
+}
+#player-selection {
+    width:800px;
+    height:130px;
+    bottom:0;
+    display:flex;
+    margin-left: 100px;
+    margin-right: 100px;
+    position:absolute;
+    font-family:'Open Sans', sans-serif;
+}
+.startBtns {
+    display:flex;
+    flex-direction: column;
+    
+}
+#start-btn {
+    width:200px;
+    height:50px;
+    font-size: 15px;
+    border: none;
+    background-color: #47cd6b;
+    font-family:'Open Sans', sans-serif;
+    color: white;
+}
+#online-btn {
+    width:200px;
+    height:50px;
+    font-size: 15px;
+    border: none;
+    background-color: #cd4747;
+    font-family:'Open Sans', sans-serif;
+    color: white;
+    margin-top: 15px;
+
+}
+#home-btn {
+    width:200px;
+    height:50px;
+    font-size: 15px;
+    border: none;
+    background-color: #5252ff;
+    font-family:'Open Sans', sans-serif;
+    color: white;
+    position:absolute;
+    left:300px;
+    right:300px;
+    display:none;
+}
+#home-btn:hover {
+    background-color: #4545de;
+}
+#start-btn:hover {
+    background-color: #369c51;
+}
+#online-btn:hover {
+    background-color: #a43939;
+    
+}
+#instructions{
+    position:absolute;
+    width:100%;
+    top:50%;
+    margin: auto;
+    margin-top:200px;
+    font-family:'Open Sans', sans-serif;
+    color:#71b583;
+    font-size:1.2em;
+    text-transform: uppercase;
+    text-align : center;
+}
+
+#credits{
+    position:absolute;
+    width:100%;
+    margin: auto;
+    bottom:0;
+    margin-bottom:20px;
+    font-family:'Open Sans', sans-serif;
+    color:#71b583;
+    font-size:0.7em;
+    text-transform: uppercase;
+    text-align : center;
+}
+#credits a {
+    color:#71b583;
+}
