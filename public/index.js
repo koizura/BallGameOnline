@@ -1,5 +1,5 @@
-// const destination = "http://localhost:3001";
-const destination = "wss://ballgame.koizura.me";
+const destination = "http://localhost:3001";
+//const destination = "wss://ballgame.koizura.me";
 let socket;
 
 
@@ -15,12 +15,14 @@ const keys = {up:false, down:false, left:false, right:false, w:false, a:false, s
 let playerL, playerR, ball;
 let MODE;
 let font;
-let leftSelect, rightSelect, startGameBtn, titleTxt, homeBtn, onlineBtn;
+let leftSelect, rightSelect, startGameBtn, titleTxt, homeBtn, onlineBtn, usernameInput, usernameBeginBtn, usernameDiv;
 let countdown = 0;
 let connected = false;
 let roomName;
 let online_isRed;
 let latency = 0;
+let nameSelectedOnline = false;
+let username = '';
 function setup() {
     let canvas = createCanvas(W,H);
     canvas.parent("world");
@@ -34,12 +36,16 @@ function setup() {
     titleTxt = select("#title");
     homeBtn = select("#home-btn");
     onlineBtn = select("#online-btn");
+    usernameInput = select("#username-input");
+    usernameBeginBtn = select("#username-begin-btn");
+    usernameDiv = select("#username-selection");
     homeBtn.hide();
+    usernameDiv.hide();
 
     startGameBtn.mousePressed(startGame);
     homeBtn.mousePressed(openMenu);
     onlineBtn.mousePressed(connectOnline);
-
+    usernameBeginBtn.mousePressed(connectOnline);
 
     playerL = newPlayer(true, leftSelect.value());
     playerR = newPlayer(false, rightSelect.value());
@@ -51,10 +57,18 @@ function setup() {
 
 
 }
+
 function connectOnline() {
+    if (!nameSelectedOnline) {
+        MODE="USERNAME_SELECTION";
+        closeMenu();
+        openUsername();
+        return;
+    }
     if (!connected ) {
         MODE="LOBBY";
         closeMenu();
+        closeUsername();
         socket = io.connect(destination);
         socket.on('connected', () => {
             console.log('connection established.');
@@ -105,6 +119,8 @@ function updateOnlineMatch(data) {
     ball.y = data.ball.y;
     countdown = data.countdown;
     roomName = data.roomName;
+    playerL.username = data.red.username;
+    playerR.username = data.blue.username;
 }
 let rate = 0;
 function draw() {
@@ -289,7 +305,7 @@ function draw() {
         text(playerR.score, W-200, 90);
         textSize(20);
         text("First to 5", W/2, 60);
-        socket.emit("updateInputs", {roomName, keys});
+        socket.emit("updateInputs", {roomName, keys, username});
     }
     else if (MODE=="ONLINE_GAMEOVER") {
         drawGoals();
@@ -310,6 +326,28 @@ function draw() {
         textSize(150);
         text(playerL.score, W*0.25, H/2);
         text(playerR.score, W*0.75, H/2);
+    }
+    else if (MODE=="USERNAME_SELECTION") {
+        drawGoals();
+        drawGround();
+
+        background(0, 150);
+
+        textSize(100);
+        fill(255);
+        textAlign(CENTER);
+        noStroke();
+        text("Please choose a username: ", W/2, H/2);
+
+        if (username.length > 16) {
+            usernameInput.value(usernameInput.value().substring(0,16));
+        } 
+        if (username.length > 0) {
+            nameSelectedOnline = true;
+        }  else {
+            nameSelectedOnline = false;
+        }
+        username = usernameInput.value();
     }
     textSize(20);
     textAlign(LEFT);
@@ -438,6 +476,7 @@ class Player {
         this.gravity = 0.5;
         this.type = "player";
         this.score = 0;
+        this.username = "player";
     }
     reset() {
         if (this.isRed) {
@@ -458,6 +497,13 @@ class Player {
         stroke(0);
         strokeWeight(5);
         ellipse(this.x, this.y, this.radius*2, this.radius*2);
+        if (this.username != "player") {
+            fill(0);
+            textAlign(CENTER);
+            noStroke();
+            textSize(30);
+            text(this.username, this.x, this.y + 70);
+        }
     }
     update() {
         this.vx *= 0.93;
@@ -643,7 +689,12 @@ function newPlayer(isRed, type) {
     return player;
 }
 
-
+function openUsername() {
+    usernameDiv.show();
+}
+function closeUsername() {
+    usernameDiv.hide();
+}
 
 function openMenu() {
     MODE="MENU";

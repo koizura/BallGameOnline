@@ -89,6 +89,7 @@ function getPlayerAsDict(player) {
         y: player.y,
         score: player.score,
         isRed: player.isRed,
+        username: player.username,
     };
 }
 function getBallAsDict(ball) {
@@ -132,8 +133,10 @@ io.on('connection', socket => {
         if (rooms[data.roomName]) {
             if (rooms[data.roomName].red.id == socket.id) {
                 rooms[data.roomName].game.redKeys = data.keys;
+                rooms[data.roomName].game.red.username = data.username;
             } else {
                 rooms[data.roomName].game.blueKeys = data.keys;
+                rooms[data.roomName].game.blue.username = data.username;
             }
         }
     });
@@ -259,6 +262,7 @@ class Player {
         this.gravity = 0.5;
         this.type = "player";
         this.score = 0;
+        this.name = "player";
     }
     reset() {
         if (this.isRed) {

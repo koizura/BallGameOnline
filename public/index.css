@@ -157,6 +157,55 @@ select:hover {
     margin-top: 15px;
 
 }
+
+#username-selection {
+    width:800px;
+    height:250px;
+    bottom:0;
+    margin-left: 100px;
+    margin-right: 100px;
+    position:absolute;
+    font-family:'Open Sans', sans-serif;
+
+}
+#username-begin-btn {
+    height:50px;
+    font-size: 15px;
+    border: none;
+    background-color: #9b45bb;
+    font-family:'Open Sans', sans-serif;
+    color: white;
+    padding: none;
+    position:absolute;
+    bottom: 100px;
+    left: 40%;
+    right:40%;
+    width:20%;
+}
+#username-begin-btn:hover {
+    background-color: #843b9f;
+}
+#username-input {
+    height:50px;
+    font-size: 25px;
+    border: none;
+    background-color: white;
+    font-family:'Open Sans', sans-serif;
+    color: black;
+    padding: 2px 10px 2px 10px;
+    position: absolute;
+    bottom:170px;
+    left:20%;
+    right:20%;
+    width:60%;
+    text-align: center;
+}
+#username-input:hover {
+    background-color: #dedede;
+}
+
+
+
 #home-btn {
     width:200px;
     height:50px;
