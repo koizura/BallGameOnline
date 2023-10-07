@@ -1,4 +1,4 @@
-//const destination = "http://localhost:3001";
+// const destination = "http://localhost:3001";
 const destination = "wss://ballgame.koizura.me";
 let socket;
 
@@ -181,8 +181,19 @@ function draw() {
         scale(map(countdown % 60, 0, 60, 1, 2));
         text(ceil((countdown+1)/60), 0, 0);
         pop();
-
-
+        textSize(40);
+        push();
+        translate(playerL.x, playerL.y - 80 + 20 * sin(countdown * 0.1));
+        text(leftSelect.value() ,0,0);
+        pop();
+        push();
+        translate(playerR.x, playerR.y - 80 + 20 * sin(countdown * 0.1));
+        text(rightSelect.value() ,0,0);
+        pop();
+        push();
+        translate(width/2, height-5);
+        text("Arrow or WASD keys to move. Get the ball into the enemy's goal!", 0, 0)
+        pop();
         if(countdown <= 0) {
             MODE="PLAY";
         }
@@ -254,7 +265,8 @@ function draw() {
         textSize(150);
         text(playerL.score, W*0.25, H/2);
         text(playerR.score, W*0.75, H/2);
-        
+        textSize(20);
+        text("looking for a bigger challenge? try changing the AI to 'master AI'!", width/2, height-10);
     }
     else if (MODE=="LOBBY") {       
         drawGoals();
